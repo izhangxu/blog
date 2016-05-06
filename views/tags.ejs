@@ -1,0 +1,5 @@
+<%- include header %>
+<% posts.forEach(function (tag, index) { %>
+  <a class="label label-success dib"  href="/tags/<%= tag %>"><%= tag %></a>
+<% }) %>
+<%- include footer %>

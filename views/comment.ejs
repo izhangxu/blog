@@ -1,0 +1,58 @@
+<br />
+<% post.comments.forEach(function (comment, index) { %>
+<p><img src="<%= comment.head %>" class="l_head"/><a href="<%= comment.website %>"><%= comment.name %></a>
+<span class="info"> 回复于 <%= comment.time %></span></p>
+<p><%- comment.content %></p>
+<% }) %>
+<form method="post" class="form-horizontal" action="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+    <% if (user) { %>
+    <div class="form-group">
+        <label for="Name" class="col-sm-1 control-label">姓名：</label>
+        <div class="col-sm-10">
+            <input type="Name" class="form-control input-sm" name="name" placeholder="Name" value="<%= user.name %>" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Email" class="col-sm-1 control-label">邮箱：</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control input-sm" name="email" placeholder="Email" value="<%= user.email %>" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Website" class="col-sm-1 control-label">网址：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control input-sm" name="website" placeholder="Website" value="/u/<%= user.name %>">
+        </div>
+    </div>
+    <% } else { %>
+    <div class="form-group">
+        <label for="Name" class="col-sm-1 control-label">姓名：</label>
+        <div class="col-sm-10">
+            <input type="Name" class="form-control input-sm" name="name" placeholder="Name" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Email" class="col-sm-1 control-label">邮箱：</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control input-sm" name="email" placeholder="Email" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Website" class="col-sm-1 control-label">网址：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control input-sm" name="website" placeholder="Website" value="http://" >
+        </div>
+    </div>
+    <% } %>
+    <div class="form-group">
+        <label for="Content" class="col-sm-1 control-label">内容：</label>
+        <div class="col-sm-10">
+            <textarea name="content" class="form-control input-sm" rows="4"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+            <button type="submit" class="btn btn-default">留 言</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,70 @@
+<%- include header %>
+<form method="post">
+	<h4>标题：</h4>
+	<input type="text" name="title" class="form-control" />
+	<h4>标签：</h4>
+	<input type="text" name="tag" class="form-control"/><span>多个标签请用半角状态下逗号隔开</span>
+	<h4>分类：</h4>
+	<div class="input-group">
+		<input type="text" id="type_inp" name="type" class="form-control" aria-label="..." value="">
+		<div class="input-group-btn">
+			<button id="type_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+			<ul id="type_ul" class="dropdown-menu dropdown-menu-right">
+				<li role="separator" class="divider"></li>
+				<li>
+					<input id="type_add" style="margin: 0 0 0 20px;" type="text"/>
+					<input id="type_sub" type="button" value="新增"/>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		$('#type_ul').on('click', function(ev){
+			if (ev.target.tagName === 'A') {
+				var ele = ev.target;
+				$('#type_inp').val(ele.innerHTML);
+				$('#type_btn').html(ele.innerHTML + '<span class="caret"></span>');
+			}
+		});
+		getTypes();
+		$('#type_sub').on('click', function(){
+			$.ajax({
+				url: '/api/addType',
+				data: {
+					type: $('#type_add').val()
+				},
+				dataType: 'json',
+				success: function(json){
+					//console.log(json);
+					if (json.status) {
+						getTypes();
+					}
+				}
+			});
+		});
+		function getTypes(){
+			$.ajax({
+				url: '/api/getTypes',
+				dataType: 'json',
+				success: function(json){
+					if (json.status) {
+						var data = json.data;
+						if (data.length === 0 || data.types.length === 0) {
+							return;
+						}
+						$('.divider').prevAll().remove();
+						for (var i =0 ;i<data.types.length;i++){
+							$('<li><a href="javascript:;">'+ data.types[i].name +'</a></li>').insertBefore($('.divider'));
+						}
+						$('#type_inp').val(data.types[0].name);
+						$('#type_btn').html(data.types[0].name + '<span class="caret"></span>');
+					}
+				}
+			});
+		}
+	</script>
+	<h4>正文：</h4>
+	<textarea name="post"></textarea><br />
+	<input class="btn btn-default" type="submit" value="发表">
+</form>
+<%- include footer %>

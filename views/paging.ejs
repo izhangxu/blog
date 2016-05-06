@@ -1,0 +1,9 @@
+<br />
+<div>
+	<% if (!isFirstPage) { %>
+	<a class="btn btn-default btn-md active" role="button" title="上一页" href="?p=<%= page-1 %>">上一页</a>
+	<% } %>
+	<% if (!isLastPage) { %>
+	<a class="btn btn-default btn-md active" role="button" title="下一页" href="?p=<%= page+1 %>">下一页</a>
+	<% } %>
+</div>
