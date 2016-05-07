@@ -81,7 +81,7 @@ var options = {
         }
     }
 };
-mongoose.connect('mongodb://localhost:27017/blog', options, function(err) {
+mongoose.connect(settings.url, options, function(err) {
     if (err) {
         console.log('数据库连接失败');
     } else {
