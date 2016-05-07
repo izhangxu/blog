@@ -28,7 +28,7 @@ module.exports = function(app) {
             }
             console.log(req.session.user);
             res.render('index', {
-                title: '主页',
+                title: '',
                 page: page,
                 isFirstPage: (page - 1) === 0,
                 isLastPage: ((page - 1) * 10 + posts.length) == total,
@@ -48,6 +48,7 @@ module.exports = function(app) {
             error: req.flash('error').toString()
         });
     });
+    //注册提交
     app.post('/reg', function(req, res) {
         var name = req.body.name,
             password = req.body.password,
@@ -114,17 +115,18 @@ module.exports = function(app) {
             res.redirect('/');
         });
     });
-
+    //发布页面渲染
     app.get('/post', checkLogin);
     app.get('/post', function(req, res) {
+        // console.log(req);
         res.render('post', {
-            title: '发表',
+            title: '',
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
         });
     });
-
+    //发布文章
     app.post('/post', checkLogin);
     app.post('/post', function(req, res) {
         var currentUser = req.session.user,
@@ -142,7 +144,7 @@ module.exports = function(app) {
     app.get('/account', checkLogin);
     app.get('/account', function(req, res){
         res.render('account', {
-            title: '个人中心',
+            title: '',
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
@@ -181,7 +183,7 @@ module.exports = function(app) {
                 return res.redirect('/');
             }
             res.render('archive', {
-                title: '存档',
+                title: '',
                 posts: posts,
                 user: req.session.user,
                 success: req.flash('success').toString(),
@@ -197,7 +199,7 @@ module.exports = function(app) {
                 return res.redirect('/');
             }
             res.render('tags', {
-                title: '标签',
+                title: '',
                 posts: posts,
                 user: req.session.user,
                 success: req.flash('success').toString(),
@@ -241,7 +243,7 @@ module.exports = function(app) {
 
     app.get('/links', function(req, res) {
         res.render('links', {
-            title: '友情链接',
+            title: '',
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()

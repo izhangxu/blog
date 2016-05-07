@@ -1,24 +1,71 @@
 <%- include header %>
-<% posts.forEach(function (post, index) { %>
-<p>
-    <h2>
-    <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
-    </h2>
-    <a href="/u/<%= post.name %>"><img src="<%= post.head %>" class="r_head"/></a>
-</p>
-<p class="info">
-    作者：<a class="mr40" href="u/<%= post.name %>"><%= post.name %></a>
-    日期：<span class="mr40"><%= post.time.minute %></span>
-    分类：<a class="mr40" href="/p/<%= post.type %>"><%= post.type %></a>
-    标签：
-    <% post.tags.forEach(function(tag, index){ %>
-    <% if (tag){ %>
-    <a class="label label-success" href="/tags/<%= tag %>"><%= tag %></a>
+<div>
+    <% if (title) { %>
+    <div class="page-header">
+        <h3><%= title %></h3>
+    </div>
     <% } %>
-    <% })%>
-</p>
-<p style="word-wrap: break-word;"><%- post.post %></p>
-<p class="info">阅读：(<%= post.pv %>) ┆ 评论：(<%= post.comments.length %>)</p>
-<% }) %>
+    <article>
+        <% if (success) { %>
+        <div class="alert alert-success" role="alert"><%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div class="alert alert-danger" role="alert"><%= error %> </div>
+        <% } %>
+    </article>
+    <div>
+        <ul>
+        <% posts.forEach(function (post, index) { %>
+        <li class="content">
+            <div class="content-box posts-gallery-box">
+                <div class="posts-gallery-img">
+                    <a href="http://grace.iwpzt.com/901.html" title="">   
+                        <img class="lazy" src="images/2.jpeg" alt="" style="display: inline-block;">
+                    </a>
+                </div>
+                <div class="posts-gallery-content">
+                    <h2><a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2>
+                    <div class="posts-gallery-text">
+                        <%- post.post %>
+                    </div>
+                    <div class="posts-default-info">
+                        <ul>
+                            <li class="post-author">
+                                <div class="avatar">
+                                    <img src="<%= post.head %>" class="photo" height="50" width="50" style="display: block;">
+                                </div>
+                                <a href="u/<%= post.name %>" target="_blank"><%= post.name %></a>
+                            </li>
+                            <li class="ico-time">
+                                <i class="icon-clock"></i>
+                                <%= post.time.minute %>
+                            </li>
+                            <li class="ico-type">
+                                <i class="icon-list"></i>
+                                <a href="/p/<%= post.type %>"><%= post.type %></a>
+                            </li>
+                            <li class="ico-eye">
+                                <i class="icon-eye"></i>
+                                <%= post.pv %>
+                            </li>
+                            <% if (post.comments.length === 0) { %>
+                            <li class="ico-like">
+                                <i class="icon-comment-empty"></i>
+                                <%= post.comments.length %>
+                            </li>
+                            <% } else { %>
+                            <li class="ico-like">
+                                <i class="icon-comment"></i>
+                                <%= post.comments.length %>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <% }) %> 
+        </ul>
+    </div>
 <%- include paging %>
 <%- include footer %>

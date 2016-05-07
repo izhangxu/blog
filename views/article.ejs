@@ -1,26 +1,40 @@
 <%- include header.ejs %>
-<p class="info">
-    作者：<a class="mr40" href="/u/<%= post.name %>"><%= post.name%></a>
-    日期：<span class="mr40"><%= post.time.minute %></span>
-    分类：<a class="mr40" href="/p/<%= post.type %>"><%= post.type %></a>
-    <% if (user && (user.name == post.name)) { %>
-    <span class="mr10">
-        <a class="btn btn-default btn-xs"  class="mr40" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a>
-    </span>
-    <span>
-        <a class="btn btn-default btn-xs" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a>
-    </span>
+<div class="m-left">
+    <% if (title) { %>
+    <div class="page-header">
+        <h3><%= title %></h3>
+    </div>
     <% } %>
-</p>
-<p>
-    标签：
-    <% post.tags.forEach(function(tag, index){ %>
-    <% if (tag){ %>
-    <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
-    <% } %>
-    <% })%>
-</p>
-<p style="word-wrap: break-word;"><%- post.post %></p>
-<p class="info">阅读：(<%= post.pv %>) ┆ 评论：(<%= post.comments.length %>)</p>
-<%- include comment.ejs %>
-<%- include footer.ejs %>
+    <article>
+        <% if (success) { %>
+        <div class="alert alert-success" role="alert"><%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div class="alert alert-danger" role="alert"><%= error %> </div>
+        <% } %>
+    </article>
+    <p class="info">
+        作者：<a class="mr40" href="/u/<%= post.name %>"><%= post.name%></a>
+        日期：<span class="mr40"><%= post.time.minute %></span>
+        分类：<a class="mr40" href="/p/<%= post.type %>"><%= post.type %></a>
+        <% if (user && (user.name == post.name)) { %>
+        <span class="mr10">
+            <a class="btn btn-default btn-xs"  class="mr40" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a>
+        </span>
+        <span>
+            <a class="btn btn-default btn-xs" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a>
+        </span>
+        <% } %>
+    </p>
+    <p>
+        标签：
+        <% post.tags.forEach(function(tag, index){ %>
+        <% if (tag){ %>
+        <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+        <% } %>
+        <% })%>
+    </p>
+    <p style="word-wrap: break-word;"><%- post.post %></p>
+    <p class="info">阅读：(<%= post.pv %>) ┆ 评论：(<%= post.comments.length %>)</p>
+    <%- include comment.ejs %>
+    <%- include footer.ejs %>

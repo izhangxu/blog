@@ -6,57 +6,64 @@
 		<title>Blog</title>
 		<link rel="stylesheet" href="/styles/bootstrap.min.css">
 		<link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/styles/fontello.css">
 		<link rel="stylesheet" href="/styles/style.css">
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script charset="utf-8" src="/KindEditor/kindeditor-all-min.js"></script>
 		<script charset="utf-8" src="/KindEditor/lang/zh-CN.js"></script>
+		<!--[if lt IE 9]>
+		<script language="javascript" type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 		<script>
 		var editor;
 		KindEditor.ready(function(K) {
 			editor = K.create('textarea[name="post"]', {
 				width: '100%',
-				height: 500,
-				uploadJson: '/upload1'
+				height: 500
 			});
 		});
 		</script>
 	</head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-9 header">
-					<ul class="nav nav-pills mt15">
-						<li role="presentation" class="active">
-							<a title="主页" href="/">
-								<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页
-							</a>
-						</li>
-						<li role="presentation"><a title="存档" href="/archive">存档</a></li>
-						<li role="presentation"><a title="标签" href="/tags">标签</a></li>
-						<li role="presentation"><a title="友情链接" href="/links">友情链接</a></li>
-						<% if (user) { %>
-						<!-- <li><a title="上传" href="/upload">上传</a></li> -->
-						<li><a title="发表" href="/post">发表</a></li>
-						<li><a title="个人中心" href="/account">个人中心</a></li>
-						<li><a title="登出" href="/logout">登出</a></li>
-						<% } else { %>
-						<li><a title="登录" href="/login">登录</a></li>
-						<li><a title="注册" href="/reg">注册</a></li>
-						<% } %>
-					</ul>
-				</div>
-				<div class="col-md-3 header">
-					<form action="/search" method="GET">
-						<div class="input-group">
-							<input type="text" class="form-control" name="keyword"  placeholder="Search for...">
-							<span class="input-group-btn">
-								<input class="btn btn-default" type="submit" value="Go!" />
-							</span>
-						</div>
-					</form>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<ul class="nav nav-pills">
+							<li role="presentation" class="active">
+								<a title="主页" href="/">
+									<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页
+								</a>
+							</li>
+							<li role="presentation"><a title="存档" href="/archive">存档</a></li>
+							<li role="presentation"><a title="标签" href="/tags">标签</a></li>
+							<li role="presentation"><a title="友情链接" href="/links">友情链接</a></li>
+							<% if (user) { %>
+							<!-- <li><a title="上传" href="/upload">上传</a></li> -->
+							<li><a title="发表" href="/post">发表</a></li>
+							<li><a title="个人中心" href="/account">个人中心</a></li>
+							<li><a title="登出" href="/logout">登出</a></li>
+							<% } else { %>
+							<li><a title="登录" href="/login">登录</a></li>
+							<li><a title="注册" href="/reg">注册</a></li>
+							<% } %>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<form action="/search" method="GET" id="search_wrap">
+							<div class="input-group">
+								<input type="text" class="form-control" name="keyword"  placeholder="Search for...">
+								<span class="input-group-btn">
+									<input class="btn btn-default" type="submit" value="Go!" />
+								</span>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
+		</div>
+		<div class="container">
 			<div class="row main">
 				<div class="col-md-3 col-md-push-9">
 					<div class="lastest">
@@ -64,31 +71,11 @@
 							最近发表
 						</h3>
 						<ul id="l_content">
-							<!-- <li>
-							<a href="">
-								<img src="/images/2.png" alt="">
-								<span>nodejs真不是吹的，牛逼啊牛逼啊！牛逼啊！！</span>
-								</a>
-							</li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼啊！牛逼啊！！</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼啊！牛逼啊！！</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼啊！牛逼啊！！</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼啊！牛逼啊！！</span></a></li> -->
+							<!-- <li><div class="fl"><a href=""><img src="/images/2.png" alt=""></a>
+							</div><div class="fl l_c_right"><h4><a href="">真不是吹的，牛逼啊牛逼啊！牛逼啊！！</a></h4><span class="info"><i class="icon-calendar"></i>2012-33-21</span></div></li> -->
 						</ul>
 					</div>
-					<!-- <div class="top">
-						<h3>
-							最新评论
-						</h3>
-						<ul id="t-content">
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼啊</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼啊</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊</span></a></li>
-							<li><a href=""><img src="/images/2.png" alt=""><span>nodejs真不是吹的，牛逼啊牛逼</span></a></li>
-						</ul>
-					</div> -->
-					<div class="tags">
+					<div class="lastest">
 						<h3>
 							标签
 						</h3>
@@ -113,11 +100,15 @@
 							url: '/api/getTop',
 							dataType: 'json',
 							success: function(json){
-								// console.log(json);
+								console.log(json);
 								if (json.status) {
 									var data = json.data;
 									for (var i = 0; i < data.length; i++) {
-										$('#l_content').append('<li><a href=""><img src="/images/2.png" alt=""><span>'+ data[i].title +'</span></a></li>');
+										$('#l_content').append('<li><div class="fl"><a href="">'+
+											'<img src="/images/2.png" alt=""></a></div><div class="fl l_c_right"><h4>'+
+											'<a href="u/'+ data[i] +'/'+ data[i].name + '/'+ data[i].time.day +'/'+ data[i].title +'">'+ data[i].title +'</a>'+
+											'</h4><span class="info"><i class="icon-calendar">'+
+											'</i>'+ data[i].time.day +'</span></div></li>');
 									}
 								}
 							}
@@ -125,14 +116,3 @@
 					</script>
 				</div>
 				<div class="col-md-9 col-md-pull-3">
-					<div class="page-header">
-						<h1><%= title %></h1>
-					</div>
-					<article>
-						<% if (success) { %>
-						<div class="alert alert-success" role="alert"><%= success %></div>
-						<% } %>
-						<% if (error) { %>
-						<div class="alert alert-danger" role="alert"><%= error %> </div>
-						<% } %>
-					</article>
