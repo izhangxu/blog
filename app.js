@@ -38,7 +38,8 @@ app.use(session({
     key: settings.db,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 30
-    }
+    },
+    url: settings.url
 }));
 app.use(flash());
 
@@ -80,7 +81,7 @@ var options = {
         }
     }
 };
-mongoose.connect('mongodb://localhost:27017/blog', options, function(err) {
+mongoose.connect(settings.url, options, function(err) {
     if (err) {
         console.log('数据库连接失败');
     } else {
