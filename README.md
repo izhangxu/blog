@@ -6,7 +6,9 @@
 
 > 前端模板用的是ejs，样式主要用的bootstrap
 
-> 数据库用的 mongolab(https://mlab.com/home)，node服务器用的Heroku(https://www.heroku.com/)
+> 数据库用的 mongolab(https://mlab.com/home)
+
+> node服务器用的 Heroku(https://www.heroku.com/)
 
 > 现阶段的功能：
 
