@@ -6,6 +6,8 @@
 
 > 前端模板用的是ejs，样式主要用的bootstrap
 
+> 数据库用的 mongolab(https://mlab.com/home)，node服务器用的Heroku(https://www.heroku.com/)
+
 > 现阶段的功能：
 
       用户：登陆、注册
@@ -15,6 +17,7 @@
       其他：友情链接页，404
     
 ###运行
-  下载后，链接本地数据库。命令行输入：
-    
-      supervisor app.js
+      下载后，链接本地数据库。命令行输入: `supervisor app.js`
+
+###项目
+      https://izhangxu.herokuapp.com/
