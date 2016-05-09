@@ -62,6 +62,9 @@ p, span, em, strong {
 	overflow: hidden;
 	font-size: 0
 }
+.none {
+	display: none;
+}
 .tl {
 	text-align: left
 }
@@ -95,6 +98,15 @@ p, span, em, strong {
 .mt15 {
 	margin-top: 15px;
 }
+.mt30 {
+	margin-top: 30px;
+}
+.mb30 {
+	margin-bottom: 30px;
+}
+.ml20 {
+	margin-left: 20px;
+}
 .main {
 	background: transparent;
 	padding: 20px 10px 40px 10px;
@@ -108,9 +120,15 @@ p, span, em, strong {
 	height: 60px;
 	padding-top: 10px;
 }
-.nav li a {
+.header-nav li a {
 	margin: 0 10px;
 	font-size: 14px;
+}
+.main .account-ul {
+	width: 50%;
+}
+.main .account-ul a {
+	font-size: 12px;
 }
 .nav .fr {
 	float: right;
@@ -517,7 +535,8 @@ article a:hover {
 	float: left;
 	width: 240px;
 	height: 160px;
-	overflow: hidden
+	overflow: hidden;
+	margin-right: 20px;
 }
 .posts-gallery-img a {
 }
@@ -526,7 +545,7 @@ article a:hover {
 	height: 160px;
 }
 .posts-gallery-content {
-	margin-left: 260px
+	
 }
 .posts-gallery-content h2 {
 	position: relative;
@@ -541,6 +560,19 @@ article a:hover {
 	word-wrap: break-word;
 	margin-top: -1em;
 }
+.posts-gallery-content .border-bom {
+	border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+.posts-gallery-content .border-bom:after {
+	content: "";
+    background-color: #337ab7;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    bottom: -2px;
+    position: absolute;
+}
 .posts-gallery-info {
 	position: absolute
 }
@@ -551,5 +583,43 @@ article a:hover {
 	color: #FFF;
 	font-weight: normal;
 	background: #378DF7;
-	line-height: 16px
+	line-height: 16px;
+}
+.basicInfo {
+    padding: 15px 0 14px;
+    background-position: bottom;
+    clear: both;
+}
+.personTable td, .personTable th {
+    font-size: 14px;
+    height: 22px;
+    vertical-align: top;
+    line-height: 23px;
+}
+.personTable .rolSele {
+    padding: 2px 0 5px;
+}
+.personTable .rolTd1 {
+    width: 57px;
+    height: 22px;
+    vertical-align: top;
+    line-height: 22px;
+    padding-right: 10px;
+}
+.edu-inp {
+	font-size: 12px;
+	margin-left: 20px;
+	height: 18px;
+	border:1px solid #ccc;
+}
+.sign-wrap {
+	width: 100%;
+}
+.sign-wrap .sign-txt {
+	width: 100%;
+	border: 1px solid #ccc;
+}
+.tit-span {
+	display: inline-block;
+	width: 80px;
 }

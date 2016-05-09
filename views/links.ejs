@@ -1,18 +1,6 @@
 <%- include header %>
 <div class="m-left">
-	<% if (title) { %>
-	<div class="page-header">
-		<h3><%= title %></h3>
-	</div>
-	<% } %>
-	<article>
-		<% if (success) { %>
-		<div class="alert alert-success" role="alert"><%= success %></div>
-		<% } %>
-		<% if (error) { %>
-		<div class="alert alert-danger" role="alert"><%= error %> </div>
-		<% } %>
-	</article>
+	<%- include alert %>
 	<ul style="list-style:none">
 		<li><h4><a href="https://love.alipay.com/donate/donateSingle.htm?name=201304201216494301">支付宝公益网</a></h4>天佑四川，为雅安地震捐款</li>
 		<li><h4><a href="http://www.onefoundation.cn/html/cn/beneficence.html">壹基金</a></h4>壹基金雅安地震救援，刻不容缓！</li>

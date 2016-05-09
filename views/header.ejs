@@ -30,7 +30,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9">
-						<ul class="nav nav-pills">
+						<ul class="nav nav-pills header-nav">
 							<li role="presentation" class="active">
 								<a title="主页" href="/">
 									<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页
@@ -39,10 +39,11 @@
 							<li role="presentation"><a title="存档" href="/archive">存档</a></li>
 							<li role="presentation"><a title="标签" href="/tags">标签</a></li>
 							<li role="presentation"><a title="友情链接" href="/links">友情链接</a></li>
+
+							<li><a title="个人中心" href="/account">个人中心</a></li>
 							<% if (user) { %>
 							<!-- <li><a title="上传" href="/upload">上传</a></li> -->
 							<li><a title="发表" href="/post">发表</a></li>
-							<li><a title="个人中心" href="/account">个人中心</a></li>
 							<li><a title="登出" href="/logout">登出</a></li>
 							<% } else { %>
 							<li><a title="登录" href="/login">登录</a></li>

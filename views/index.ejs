@@ -1,30 +1,23 @@
 <%- include header %>
 <div>
-    <% if (title) { %>
-    <div class="page-header">
-        <h3><%= title %></h3>
-    </div>
-    <% } %>
-    <article>
-        <% if (success) { %>
-        <div class="alert alert-success" role="alert"><%= success %></div>
-        <% } %>
-        <% if (error) { %>
-        <div class="alert alert-danger" role="alert"><%= error %> </div>
-        <% } %>
-    </article>
+    <%- include alert %>
     <div>
         <ul>
         <% posts.forEach(function (post, index) { %>
         <li class="content">
             <div class="content-box posts-gallery-box">
+            <% if (post.firstPic) { %>
                 <div class="posts-gallery-img">
-                    <a href="http://grace.iwpzt.com/901.html" title="">   
-                        <img class="lazy" src="images/2.jpeg" alt="" style="display: inline-block;">
+                    <a href="" title="">   
+                        <img class="lazy" src="<%= post.firstPic %>" alt="" style="display: inline-block;">
                     </a>
                 </div>
                 <div class="posts-gallery-content">
                     <h2><a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2>
+            <% } else {%>
+                <div class="posts-gallery-content">
+                    <h2 class="border-bom"><a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2>
+            <% } %>
                     <div class="posts-gallery-text">
                         <%- post.post %>
                     </div>

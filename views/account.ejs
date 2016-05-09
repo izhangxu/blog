@@ -1,4 +1,242 @@
 <%- include header %>
-
-
-<%- include footer %>
+<div class="m-left">
+	<%- include alert %>
+	<ul class="nav nav-tabs nav-justified account-ul">
+		<li role="presentation" class="active"><a href="#">个人信息</a></li>
+		<li role="presentation" class=""><a href="#">头像昵称</a></li>
+		<li role="presentation" class=""><a href="#">登陆密码</a></li>
+	</ul>
+	<div class="row none" style="padding: 40px 20px;">
+		<div class="col-sm-12">
+			<table class="personTable">
+				<tbody><tr><th colspan="2" align="left">个人资料：</th>
+			</tr></tbody></table>
+			<div id="basicInfoEditor" class="basicInfo col-md-10">
+			    <table class="personTable">
+			        <tbody>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele">性&nbsp;&nbsp;&nbsp;别：</td>
+			                <td class="rolTd2rolSele">
+			                    <span class="tdP20">
+			                        <em class="personRadio">
+			                            <input id="bis_man" name="basicInfoSex" value="1" type="radio"></em>
+			                        <label for="bis_man">男</label>
+			                        <em class="personRadio">
+			                            <input id="bis_female" name="basicInfoSex" value="0" type="radio"></em>
+			                        <label for="bis_female">女</label></span>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele">生&nbsp;&nbsp;&nbsp;日：</td>
+			                <td class="rolTd2 rolSele">
+			                    <span class="tdP20">
+			                        <em>
+			                            <select id="selBirthdayYear" style="width:66px;">
+			                                <option value="0">年</option>
+			                                <option value="2016">2016</option>
+			                                <option value="2015">2015</option>
+			                            </select>
+			                        </em>&nbsp;&nbsp;
+			                        <em>
+			                            <select id="selBirthdayMonth" style="width:46px;">
+			                                <option value="0">月</option>
+			                                <option value="1">1</option>
+			                            </select>
+			                        </em>
+			                        <em>&nbsp;&nbsp;
+			                            <select id="selBirthdayDay" style="width:46px;">
+			                                <option value="0">日</option>
+			                                <option value="1">1</option>
+			                            </select>
+			                        </em>&nbsp;&nbsp;
+			                        <em>
+			                            <select id="selBirthdayDisplay" style="width:138px;">
+			                                <option value="0">显示完整年月日</option>
+			                                <option value="1">仅显示月份和日期</option>
+			                                <option value="2">不显示我的生日</option></select>
+			                        </em>
+			                        <em class="sameBirth">
+			                            <a id="sameBirthday" href="javascript:;"></a>
+			                        </em>
+			                    </span>
+			                    <p id="msgBirthday" style="display:none;" class="errorAction addForm">请选择完整年月日</p>
+			                    <p id="msgSameBirthday" style="display:none;" class="errorAction addForm">请选择完整出生日期，才能找到你的同生缘</p></td>
+			            </tr>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele">婚&nbsp;&nbsp;&nbsp;姻：</td>
+			                <td class="rolTd2 rolSele">
+			                    <span class="tdP20">
+			                        <em>
+			                            <select id="selMarriage" style="width:82px;">
+			                                <option value="0">请选择</option>
+			                                <option value="1">单身</option>
+			                                <option value="2">恋爱中</option>
+			                                <option value="3">小两口</option>
+			                                <option value="4">家有儿女</option></select>
+			                        </em>
+			                    </span>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele">职&nbsp;&nbsp;&nbsp;业：</td>
+			                <td class="rolTd2 rolSele">
+			                    <span class="tdP20">
+			                        <em>
+			                            <select id="selJob" style="width:207px;">
+			                                <option value="0">请选择</option>
+			                                <option value="1">学生</option>
+			                            </select>
+			                        </em>
+			                    </span>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele">现居地：</td>
+			                <td class="rolTd2 rolSele">
+			                    <span class="tdP20">
+			                        <em>
+			                            <select id="selProvince" style="width:105px;">
+			                                <option value="0">请选择</option>
+			                                <option value="34">安徽</option>
+			                            </select>
+			                        </em>&nbsp;&nbsp;
+			                        <em>
+			                            <select id="selCity" style="width: 165px;">
+			                                <option value="0">请选择</option>
+			                                <option value="2">东城</option>
+			                            </select>
+			                        </em>
+			                        <em class="sameBirth">
+			                            <a id="samePlace" href="javascript:;"></a>
+			                        </em>
+			                    </span>
+			                    <p id="msgPlace" style="display:none;" class="errorAction addForm">请选择省内城市或直辖市区域</p>
+			                    <p id="msgSamePlace" style="display:none;" class="errorAction addForm">请选择完整现居地位置，才能找到你的邻居</p></td>
+			            </tr>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele">家&nbsp;&nbsp;&nbsp;乡：</td>
+			                <td class="rolTd2 rolSele">
+			                    <span class="tdP20">
+			                        <em>
+			                            <select id="selHometownProvince" style="width:105px;">
+			                                <option value="0">请选择</option>
+			                                <option value="34">安徽</option>
+			                                <option value="11">北京</option>
+			                            </select>
+			                        </em>&nbsp;&nbsp;
+			                        <em>
+			                            <select id="selHometownCity" style="width: 165px; display: none;" disabled="">
+			                                <option></option></select>
+			                        </em>
+			                        <em class="sameBirth">
+			                            <a id="sameHometown" href="javascript:;"></a>
+			                        </em>
+			                    </span>
+			                    <p id="msgHometown" style="display:none;" class="errorAction addForm">请选择省内城市或直辖市区域</p>
+			                    <p id="msgSameHometown" style="display:none;" class="errorAction addForm">请选择完整家乡位置，才能找到你的老乡</p></td>
+			            </tr>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele"></td>
+			                <td class="rolTd2 rolSele">
+			                    <p class="personBtn">
+			                        <span>
+			                            <a href="#" class="btn btn-primary btn-xs active" role="button">保存</a>
+			                        </span>
+			                        <span>
+										<a href="#" class="btn btn-default btn-xs active" role="button">取消</a>
+			                        </span>
+			                    </p>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<table class="personTable">
+				<tbody><tr><th colspan="2" align="left">个人经历：</th>
+			</tr></tbody></table>
+			<div id="eduInfoEditor" class="basicInfo col-md-10">
+			    <table class="personTable">
+			        <tbody>
+			            <tr>
+			                <td class="rolTd1 CP_txta rolSele"></td>
+			                <td class="rolTd2rolSele">
+			                    <span class="tdP20">
+			                    	<select>
+			                    		<option>大学</option>
+			                    		<option>中学</option>
+			                    		<option>初中</option>
+			                    	</select>
+			                    	<input class="edu-inp" type="text" placeholder="学校名称"/>
+			                    	<input class="edu-inp" type="text" placeholder="班级/专业"/>
+			                    	<select class="ml20">
+			                    		<option>入读时间</option>
+			                    		<option>2014</option>
+			                    	</select>
+			                    	<a href="#" class="ml20 btn btn-primary btn-xs active" role="button">新增</a>
+			                    	<a href="#" class="btn btn-primary btn-xs active" role="button">删除</a>
+			                    </span>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<table class="personTable">
+				<tbody><tr><th colspan="2" align="left">个人经历：</th>
+			</tr></tbody></table>
+			<div id="signInfoEditor" class="basicInfo col-md-10">
+			    <table class="personTable sign-wrap">
+			        <tbody>
+			            <tr>
+			                <td class="rolTd2">
+			                    <span class="tdP20">
+			                    	<textarea class="sign-txt" rows="3"></textarea>
+			                    </span>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+	</div>
+	<div class="row none" style="padding: 40px 20px;">
+		<div class="col-sm-12">
+			<div>
+				<span>昵&nbsp;&nbsp;&nbsp;称：</span>
+				<input class="edu-inp mr10" type="text" placeholder="输入昵称"/>只能输入数字、英文字母、下划线（_）
+			</div>
+			<div class="mt15" >
+				<span>头&nbsp;&nbsp;&nbsp;像：</span>
+				<input class="edu-inp" type="text" id="head_val"/>
+				<span id="head_upload">上传</span>
+			</div>
+		</div>
+		<div class="col-sm-12 mt30">
+			<a href="#" class="btn btn-primary btn-xs active" role="button">保存</a>
+			<a href="#" class="btn btn-primary btn-xs active" role="button">取消</a>
+		</div>
+	</div>
+	<div class="row" style="padding: 40px 20px;">
+		<div class="col-sm-12">
+			<div>
+				<span class="tit-span">旧密码：</span>
+				<input class="edu-inp mr10" type="text" placeholder="输入昵称"/>
+			</div>
+			<div class="mt15" >
+				<span class="tit-span">新密码：</span>
+				<input class="edu-inp mr10" type="text" placeholder="输入昵称"/>
+			</div>
+			<div class="mt15" >
+				<span class="tit-span">再输入一次：</span>
+				<input class="edu-inp mr10" type="text" placeholder="输入昵称"/>
+			</div>
+		</div>
+		<div class="col-sm-12 mt30">
+			<a href="#" class="btn btn-primary btn-xs active" role="button">保存</a>
+			<a href="#" class="btn btn-primary btn-xs active" role="button">取消</a>
+		</div>
+	</div>
+	<%- include footer %>

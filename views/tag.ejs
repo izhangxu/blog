@@ -1,18 +1,6 @@
 <%- include header %>
 <div class="m-left">
-	<% if (title) { %>
-	<div class="page-header">
-		<h3><%= title %></h3>
-	</div>
-	<% } %>
-	<article>
-		<% if (success) { %>
-		<div class="alert alert-success" role="alert"><%= success %></div>
-		<% } %>
-		<% if (error) { %>
-		<div class="alert alert-danger" role="alert"><%= error %> </div>
-		<% } %>
-	</article>
+	<%- include alert %>
 	<ul class="archive">
 		<% var lastYear = 0 %>
 		<% posts.forEach(function (post, index) { %>

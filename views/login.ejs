@@ -39,10 +39,10 @@
                         <label for="Email" class="col-sm-2 control-label"></label>
                         <article class="col-md-10">
                             <% if (success) { %>
-                            <div class="alert alert-success" role="alert"><%= success %></div>
+                            <div class="alert alert-success" role="alert"><%= success %><button type="button" data-dismiss="alert" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                             <% } %>
                             <% if (error) { %>
-                            <div class="alert alert-danger" role="alert"><%= error %> </div>
+                            <div class="alert alert-danger" role="alert"><%= error %><button type="button"  data-dismiss="alert" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                             <% } %>
                         </article>
                     </div>
