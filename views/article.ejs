@@ -1,4 +1,6 @@
 <%- include header.ejs %>
+<%- include head-info %>
+<%- include right %>
 <div class="m-left">
     <% if (title) { %>
     <div class="page-header">
@@ -17,12 +19,12 @@
         作者：<a class="mr40" href="/u/<%= post.name %>"><%= post.name%></a>
         日期：<span class="mr40"><%= post.time.minute %></span>
         分类：<a class="mr40" href="/p/<%= post.type %>"><%= post.type %></a>
-        <% if (user && (user.name == post.name)) { %>
+        <% if (flag && (user.name == post.name)) { %>
         <span class="mr10">
-            <a class="btn btn-default btn-xs"  class="mr40" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a>
+            <a class="btn btn-default btn-xs"  class="mr40" href="/edit/<%= post.name %>/<%= post._id %>">编辑</a>
         </span>
         <span>
-            <a class="btn btn-default btn-xs" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a>
+            <a class="btn btn-default btn-xs" href="/remove/<%= post.name %>/<%= post._id %>">删除</a>
         </span>
         <% } %>
     </p>

@@ -134,8 +134,7 @@ p, span, em, strong {
 	float: right;
 }
 .cont {
-	background: #fff;
-	/*padding: 20px 0 40px 0;*/
+	background: #fff;	/*padding: 20px 0 40px 0;*/
 }
 #search_wrap [name=keyword] {
 	border-radius: 50px 0 0 50px;
@@ -177,7 +176,7 @@ p, span, em, strong {
 #tags_content {
 	margin-top: 20px;
 }
-.lastest span {
+.lastest .info {
 	font-size: 13px;
 	display: inline-block;
 	vertical-align: top;
@@ -370,7 +369,7 @@ article a:hover {
 }
 .m-left {
 	background: #fff;
-    padding: 20px;
+	padding: 20px;
 }
 .tag {
 	background-color: #ff0000;
@@ -545,7 +544,6 @@ article a:hover {
 	height: 160px;
 }
 .posts-gallery-content {
-	
 }
 .posts-gallery-content h2 {
 	position: relative;
@@ -562,16 +560,16 @@ article a:hover {
 }
 .posts-gallery-content .border-bom {
 	border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 }
 .posts-gallery-content .border-bom:after {
 	content: "";
-    background-color: #337ab7;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    bottom: -2px;
-    position: absolute;
+	background-color: #337ab7;
+	left: 0;
+	width: 40px;
+	height: 3px;
+	bottom: -2px;
+	position: absolute;
 }
 .posts-gallery-info {
 	position: absolute
@@ -586,31 +584,31 @@ article a:hover {
 	line-height: 16px;
 }
 .basicInfo {
-    padding: 15px 0 14px;
-    background-position: bottom;
-    clear: both;
+	padding: 15px 0 14px;
+	background-position: bottom;
+	clear: both;
 }
 .personTable td, .personTable th {
-    font-size: 14px;
-    height: 22px;
-    vertical-align: top;
-    line-height: 23px;
+	font-size: 14px;
+	height: 22px;
+	vertical-align: top;
+	line-height: 23px;
 }
 .personTable .rolSele {
-    padding: 2px 0 5px;
+	padding: 2px 0 5px;
 }
 .personTable .rolTd1 {
-    width: 57px;
-    height: 22px;
-    vertical-align: top;
-    line-height: 22px;
-    padding-right: 10px;
+	width: 57px;
+	height: 22px;
+	vertical-align: top;
+	line-height: 22px;
+	padding-right: 10px;
 }
 .edu-inp {
 	font-size: 12px;
 	margin-left: 20px;
 	height: 18px;
-	border:1px solid #ccc;
+	border: 1px solid #ccc;
 }
 .sign-wrap {
 	width: 100%;
@@ -622,4 +620,96 @@ article a:hover {
 .tit-span {
 	display: inline-block;
 	width: 80px;
+}
+.tit-span01 {
+	display: inline-block;
+	width: 60px;
+}
+.avatar-account {
+	display: inline-block;
+	border: 2px solid #ffd4c7;
+	padding: 3px;
+	width: 160px;
+	height: 160px;
+	background: #fff;
+	margin: 20px 20px;
+}
+#choosebox {
+	display: inline-block;
+	margin-left: 22px;
+	width: 128px;
+	border: 1px solid #ccc;
+	background: #ccc;
+	font-size: 12px;
+	height: 22px;
+	padding: 0 5px;
+	line-height: 22px;
+	cursor: pointer;
+	white-space: nowrap;
+    overflow: hidden;
+}
+#upload {
+	margin-left: 20px;
+}
+.authors_profile {
+	position: relative
+}
+.authors_profile .author_pic {
+	display: block;
+	margin-bottom: 20px;
+	text-align: center
+}
+.authors_profile .author_pic img {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border: 1px solid #CCCCCC;
+	padding: 2px;
+	width: 80px;
+	height: 80px
+}
+.authors_profile .author_name {
+	font-size: 18px;
+	display: block;
+	margin-bottom: 10px;
+	text-align: center
+}
+.authors_profile .author_name a {
+	color: #19B5FE
+}
+.authors_profile .author_name span {
+	font-size: 12px;
+	background: #CECECE;
+	color: #FFFFFF;
+	padding: 2px 6px;
+	margin-left: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	top: -1px;
+	position: relative
+}
+.authors_profile .author_dec {
+	text-align: center;
+	font-size: 13px;
+	padding: 0 15px 5px
+}
+.authors_profile .author_post_like {
+	text-align: center
+}
+.authors_profile .author_post_like a {
+	border: 1px rgba(0, 0, 0, 0.15) solid;
+	padding: 8px 13px;
+	cursor: pointer;
+	background-color: #F74840;
+	border-color: rgba(0, 0, 0, 0);
+	color: #fff;
+	height: 34px;
+	line-height: 34px;
+	font-size: 12px;
+	border-radius: 999em
+}
+.authors_profile .author_post_like a:hover {
+	background-color: #282828;
+	color: #fff
 }

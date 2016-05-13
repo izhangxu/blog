@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var ObjectID = require('mongodb').ObjectID;
 
 var postSchema = new mongoose.Schema({
 	name: String,
@@ -9,13 +10,14 @@ var postSchema = new mongoose.Schema({
 	tags: [String],
 	type: String,
 	comments: [],
+	firstPic: String,
 	pv: Number
 });
 
 var postModel = mongoose.model('posts', postSchema);
 
 module.exports = {
-	save: function(name, head, title, tags, type, post, callback) {
+	save: function(name, head, title, tags, type, post, firstPic, callback) {
 		var date = new Date();
 		//时间扩展
 		var time = {
@@ -36,6 +38,7 @@ module.exports = {
 			tags: tags,
 			type: type,
 			comments: [],
+			firstPic: firstPic,
 			pv: 0
 		};
 		var newPost = new postModel(d);
@@ -83,11 +86,9 @@ module.exports = {
 				});
 		});
 	},
-	getOne: function(name, day, title, callback) {
+	getOne: function(_id, callback) {
 		postModel.findOne({
-			"name": name,
-			"time.day": day,
-			"title": title
+			"_id": new ObjectID(_id)
 		}, function(err, doc) {
 			if (err) {
 				return callback(err);
@@ -95,9 +96,7 @@ module.exports = {
 			if (doc) {
 				//每访问 1 次，pv 值增加 1
 				this.update({
-					"name": name,
-					"time.day": day,
-					"title": title
+					"_id": new ObjectID(_id)
 				}, {
 					$inc: {
 						"pv": 1
@@ -111,11 +110,9 @@ module.exports = {
 			}
 		});
 	},
-	edit: function(name, day, title, callback) {
+	edit: function(_id, callback) {
 		postModel.findOne({
-			"name": name,
-			"time.day": day,
-			"title": title
+			"_id": new ObjectID(_id)
 		}, function(err, doc) {
 			if (err) {
 				return callback(err);
@@ -123,11 +120,9 @@ module.exports = {
 			callback(null, doc);
 		});
 	},
-	update: function(name, day, title, post, callback) {
+	update: function(_id, post, callback) {
 		postModel.update({
-			"name": name,
-			"time.day": day,
-			"title": title
+			"_id": new ObjectID(_id)
 		}, {
 			$set: {
 				post: post
@@ -139,12 +134,10 @@ module.exports = {
 			callback(null);
 		});
 	},
-	remove: function(name, day, title, callback) {
+	remove: function(_id, callback) {
 		//根据用户名、日期和标题查找并删除一篇文章
 		postModel.remove({
-			"name": name,
-			"time.day": day,
-			"title": title
+			"_id": new ObjectID(_id)
 		}, function(err) {
 			if (err) {
 				return callback(err);
@@ -219,11 +212,9 @@ module.exports = {
 			callback(null, docs);
 		});
 	},
-	saveComment: function(name, day, title, comment, callback) {
+	saveComment: function(_id, comment, callback) {
 		postModel.update({
-			"name": name,
-			"time.day": day,
-			"title": title
+			"_id": new ObjectID(_id)
 		}, {
 			$push: {
 				"comments": comment

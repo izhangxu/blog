@@ -1,4 +1,6 @@
 <%- include header.ejs %>
+<%- include head-info %>
+<%- include right %>
 <div class="m-left">
 	<%- include alert %>
 	<form method="post" action="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">

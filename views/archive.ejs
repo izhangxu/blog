@@ -1,4 +1,5 @@
 <%- include header %>
+<%- include right %>
 <div class="m-left">
 	<%- include alert %>
 	<ul class="archive">
@@ -8,7 +9,7 @@
 		<li><h3><%= post.time.month %></h3></li>
 		<% lastMonth=post.time.month } %>
 		<li><time class=""><%= post.time.day %></time></li>
-		<li><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></li>
+		<li><a href="/post/<% post.name %>/<%= post._id %>"><%= post.title %></a></li>
 		<% }) %>
 	</ul>
 	<%- include footer %>
