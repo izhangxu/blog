@@ -133,19 +133,27 @@ module.exports = function(app) {
             res.redirect('/');
         });
     });
-
+    //个人中心页
     app.get('/account', checkLogin);
     app.get('/account', function(req, res) {
         var currentUser = req.session.user;
-        fs.readdir('public/images/' + currentUser.name, function(err, files) {
-            res.render('account', {
-                title: '',
-                files: files,
-                user: req.session.user,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
+        User.get(currentUser.name, function(err, user) {
+            if (!user) {
+                req.flash('error', '用户不存在');
+                return res.redirect('/login');
+            }
+            req.session.user = user;
+            fs.readdir('public/images/' + currentUser.name, function(err, files) {
+                res.render('account', {
+                    title: '',
+                    files: files,
+                    user: req.session.user,
+                    success: req.flash('success').toString(),
+                    error: req.flash('error').toString()
+                });
             });
         });
+
     });
     //上传图片
     app.post('/imgUpload/:name', function(req, res) {
@@ -540,7 +548,7 @@ module.exports = function(app) {
     });
 
     //更新图片和昵称
-    app.get('/api/update/userPic', function(req, res){
+    app.get('/api/update/userPic', function(req, res) {
         var currentUser = req.session.user;
         User.updatePic(currentUser.name, req.query.head, req.query.nick, function(err, user) {
             if (err) {
