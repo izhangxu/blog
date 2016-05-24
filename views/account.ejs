@@ -1,5 +1,6 @@
 <%- include header %>
 <script type="text/javascript" src="../js/ajaxform.js"></script>
+<script type="text/javascript" src="../js/geo.js"></script>
 <%- include head-info %>
 <%- include right %>
 <div class="m-left">
@@ -145,34 +146,27 @@
 					            <tr>
 					                <td class="rolTd1 CP_txta rolSele">生&nbsp;&nbsp;&nbsp;日：</td>
 					                <td class="rolTd2 rolSele">
-					                    <span class="tdP20">
+					                <form name="form1">
+					                    <span class="tdP20" id="brithday_wrap">
 					                        <em>
 					                            <select id="selBirthdayYear" name="basicInfoYear" style="width:66px;">
-					                                <option value="0">年</option>
-					                                <option value="2016">2016</option>
-					                                <option value="2015">2015</option>
+					                                
 					                            </select>
 					                        </em>&nbsp;&nbsp;
 					                        <em>
 					                            <select id="selBirthdayMonth" name="basicInfoMonth" style="width:46px;">
-					                                <option value="0">月</option>
-					                                <option value="1">1</option>
+					                                
 					                            </select>
 					                        </em>
 					                        <em>&nbsp;&nbsp;
 					                            <select id="selBirthdayDay" name="basicInfoDay" style="width:46px;">
-					                                <option value="0">日</option>
-					                                <option value="1">1</option>
+					                                
 					                            </select>
-					                        </em>&nbsp;&nbsp;
-					                        <em>
-					                            <select id="selBirthdayDisplay" style="width:138px;">
-					                                <option value="0">显示完整年月日</option>
-					                                <option value="1">仅显示月份和日期</option>
-					                                <option value="2">不显示我的生日</option></select>
 					                        </em>
 					                    </span>
+
 					                    <p id="msgBirthday" style="display:none;" class="errorAction addForm">请选择完整年月日</p>
+					                </form>
 					            </tr>
 					            <tr>
 					                <td class="rolTd1 CP_txta rolSele">婚&nbsp;&nbsp;&nbsp;姻：</td>
@@ -207,19 +201,22 @@
 					                <td class="rolTd2 rolSele">
 					                    <span class="tdP20">
 					                        <em>
-					                            <select id="selProvince" name="basicInfoProvince" style="width:105px;">
-					                                <option value="0">请选择</option>
-					                                <option value="34">安徽</option>
+					                            <select id="selProvince" name="basicInfoProvince" style="width:105px;" id="s1">
 					                            </select>
 					                        </em>&nbsp;&nbsp;
 					                        <em>
-					                            <select id="selCity" name="basicInfoCity" style="width: 165px;">
-					                                <option value="0">请选择</option>
-					                                <option value="2">东城</option>
+					                            <select id="selCity" name="basicInfoCity" style="width: 105px;">
+					                            </select>
+					                        </em>&nbsp;&nbsp;
+					                        <em>
+					                            <select id="selArea" name="basicInfoArea" style="width: 105px;">
 					                            </select>
 					                        </em>
 					                    </span>
 					                    <p id="msgPlace" style="display:none;" class="errorAction addForm">请选择省内城市或直辖市区域</p>
+					                    <script>
+					                    	addressInit('selProvince', 'selCity', 'selArea');
+					                    </script>
 					            </tr>
 					            <tr>
 					                <td class="rolTd1 CP_txta rolSele">家&nbsp;&nbsp;&nbsp;乡：</td>
@@ -227,17 +224,19 @@
 					                    <span class="tdP20">
 					                        <em>
 					                            <select id="selHometownProvince" name="basicInfoHometownProvince" style="width:105px;">
-					                                <option value="0">请选择</option>
-					                                <option value="34">安徽</option>
-					                                <option value="11">北京</option>
 					                            </select>
 					                        </em>&nbsp;&nbsp;
 					                        <em>
-					                            <select id="selHometownCity" name="basicInfoHometownCity" style="width: 165px; display: none;" disabled="">
-					                                <option value="0">请选择</option></select>
+					                            <select id="selHometownCity" name="basicInfoHometownCity" style="width: 105px;"></select>
+					                        </em>&nbsp;&nbsp;
+					                        <em>
+					                            <select id="selHometownArea" name="basicInfoHometownArea" style="width: 105px;"></select>
 					                        </em>
 					                    </span>
 					                    <p id="msgHometown" style="display:none;" class="errorAction addForm">请选择省内城市或直辖市区域</p>
+					                    <script>
+					                    	addressInit('selHometownProvince', 'selHometownCity', 'selHometownArea');
+					                    </script>
 					            </tr>
 					        </tbody>
 					    </table>
@@ -260,7 +259,6 @@
 					                    		<option>初中</option>
 					                    	</select>
 					                    	<input class="edu-inp" name="basicInfoEduSchool" type="text" placeholder="学校名称"/>
-					                    	<input class="edu-inp" type="text" placeholder="班级/专业"/>
 					                    	<select class="ml20" name="basicInfoEduTime">
 					                    		<option>入读时间</option>
 					                    		<option>2014</option>

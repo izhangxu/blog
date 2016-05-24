@@ -1,0 +1,13 @@
+<% if (title) { %>
+<div class="page-header">
+    <h3><%= title %></h3>
+</div>
+<% } %>
+<article>
+    <% if (success) { %>
+    <div class="alert alert-success" data-dismiss="alert" role="alert"><%= success %><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+    <% } %>
+    <% if (error) { %>
+    <div class="alert alert-danger" data-dismiss="alert" role="alert"><%= error %><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+    <% } %>
+</article>

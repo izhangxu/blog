@@ -221,7 +221,7 @@ module.exports = function(app) {
                             return res.json({
                                 status: 3,
                                 data: {
-                                    imgurl: 'images/temp/' + name,
+                                    imgurl: '/images/temp/' + name,
                                     imgname: name
                                 },
                                 msg: '上传成功'
@@ -557,6 +557,14 @@ module.exports = function(app) {
                     msg: 'err'
                 });
             }
+            // fs.readFile('../public' + req.query.head, function(err, data) {
+            //     var newPath = '../public/images/'+ currentUser.name;
+            //     fs.writeFile(newPath, data, function(err) {
+            //         if (err) {
+            //             console.log(err);
+            //         }
+            //     });
+            // });
             res.json({
                 status: 1,
                 msg: 'succ',

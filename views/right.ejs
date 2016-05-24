@@ -1,0 +1,50 @@
+<div class="lastest">
+	<h3>
+	最近发表
+	</h3>
+	<ul id="l_content">
+		<!-- <li><div class="fl"><a href=""><img src="/images/2.png" alt=""></a>
+		</div><div class="fl l_c_right"><h4><a href="">真不是吹的，牛逼啊牛逼啊！牛逼啊！！</a></h4><span class="info"><i class="icon-calendar"></i>2012-33-21</span></div></li> -->
+	</ul>
+</div>
+<div class="lastest">
+	<h3>
+	标签
+	</h3>
+	<div id="tags_content">
+	</div>
+</div>
+<script type="text/javascript">
+	$.ajax({
+		url: '/api/getTags',
+		dataType: 'json',
+		success: function(json){
+			// console.log(json);
+			if (json.status) {
+				var data = json.data;
+				for (var i=0;i<data.length;i++){
+					$('#tags_content').append('<a class="label label-success dib"  href="/tags/'+ data[i] +'">'+ data[i] +'</a>');
+				}
+			}
+		}
+	});
+	$.ajax({
+		url: '/api/getTop',
+		dataType: 'json',
+		success: function(json){
+			console.log(json);
+			if (json.status) {
+				var data = json.data;
+				for (var i = 0; i < data.length; i++) {
+					$('#l_content').append('<li><div class="fl"><a href="">'+
+						'<img src="/images/2.png" alt=""></a></div><div class="fl l_c_right"><h4>'+
+						'<a href="u/'+ data[i] +'/'+ data[i].name + '/'+ data[i].time.day +'/'+ data[i].title +'">'+ data[i].title +'</a>'+
+						'</h4><span class="info"><i class="icon-calendar">'+
+						'</i>'+ data[i].time.day +'</span></div></li>');
+				}
+			}
+		}
+	});
+</script>
+</div>
+<div class="col-md-9 col-md-pull-3">
