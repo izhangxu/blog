@@ -9,7 +9,6 @@ var bodyParser = require('body-parser');
 //session会话存储
 var session = require('express-session');
 //链接mongodb
-// var MongoStore = require('connect-mongo')(session);
 //提示
 var flash = require('connect-flash');
 //加密

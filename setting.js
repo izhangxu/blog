@@ -1,4 +1,4 @@
- module.exports = {
-  	cookieSecret: 'myblog',
-    url: 'mongodb://zhangxu:zx123456@ds034279.mlab.com:34279/blog'
- };
+module.exports = {
+	cookieSecret: 'myblog',
+	url: 'mongodb://127.0.0.1:27017'
+};

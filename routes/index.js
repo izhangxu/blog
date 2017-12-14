@@ -1,7 +1,6 @@
 var crypto = require('crypto');
 var User = require('../models/user');
 var Post = require('../models/post');
-var Util = require('../models/util');
 var fs = require('fs');
 var formidable = require('formidable');
 var gm = require('gm');
@@ -122,9 +121,10 @@ module.exports = function(app) {
     app.post('/post', function(req, res) {
         var currentUser = req.session.user,
             tags = (req.body.tag).split(','),
-            m = /<img (([a-zA-Z0-9_-]*)=(["|'])([a-zA-Z0-9_-]*)\3\s*)*src=((["|'])(https|http|ftp|rtsp|mms)?:\/\/[^\s"']+(["|']))/img.exec(req.body.post)[5].replace(/"|'/mg, '');
-        // console.log(m[5]);
-        Post.save(currentUser.name, currentUser.head, req.body.title, tags, req.body.type, req.body.post, m, function(err) {
+            picExec = /<img.*src="(\S*)"/img.exec(req.body.post),
+            pic = picExec ? picExec[1] ? picExec[1] : '' : '';
+
+        Post.save(currentUser.name, currentUser.head, req.body.title, tags, req.body.type, req.body.post, pic, function(err) {
             if (err) {
                 req.flash('error', err);
                 return res.redirect('/');
@@ -157,7 +157,6 @@ module.exports = function(app) {
     });
     //上传图片
     app.post('/imgUpload/:name', function(req, res) {
-        var currentUser = req.session.user;
         var form = new formidable.IncomingForm(); //创建上传表单
         form.encoding = 'utf-8'; //设置编辑
         form.uploadDir = 'public/images/temp'; //设置上传目录
